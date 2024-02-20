@@ -8,6 +8,10 @@ export default function StepsSimple() {
   ]);
   const [currentStep, setCurrentStep] = useState(0);
 
+  const handleStepClick = (index) => {
+    setCurrentStep(index);
+  };
+
   const handleNext = () => {
     setCurrentStep((prevStep) => Math.min(prevStep + 1, steps.length - 1));
   };
@@ -23,22 +27,21 @@ export default function StepsSimple() {
   const StepComponent = steps[currentStep].component;
 
   return (
-    <div className="m-10 p-10 space-y-10">
-      <div>Simple</div>
+    <div className="">
       <nav aria-label="Progress">
         <ol role="list" className="space-y-4 md:flex md:space-x-8 md:space-y-0">
           {steps.map((step, index) => (
-            <li key={step.name} className="md:flex-1">
+            <li key={step.name} className="md:flex-1" onClick={() => handleStepClick(index)}>
               <a
                 href={step.href}
                 className={`group flex flex-col border-l-4 ${
-                  index <= currentStep ? 'border-indigo-600' : 'border-gray-200'
+                  index === currentStep ? 'border-indigo-600' : 'border-gray-200'
                 } py-2 pl-4 ${
-                  index <= currentStep ? 'md:border-indigo-800 group-hover:border-indigo-800' : 'hover:border-gray-300 group-hover:border-gray-300'
+                  index === currentStep ? 'md:border-indigo-800 group-hover:border-indigo-800' : 'hover:border-gray-300 group-hover:border-gray-300'
                 } md:border-l-0 md:border-t-4 md:pb-0 md:pl-0 md:pt-4`}
               >
                 <span className={`text-sm font-medium ${
-                  index <= currentStep ? 'text-indigo-600 group-hover:text-indigo-800' : 'text-gray-500 group-hover:text-gray-700'
+                  index === currentStep ? 'text-indigo-600 group-hover:text-indigo-800' : 'text-gray-500 group-hover:text-gray-700'
                 }`}>{step.id}</span>
                 <span className="text-sm font-medium">{step.name}</span>
               </a>
@@ -74,7 +77,6 @@ export default function StepsSimple() {
 function Step1Content({ onNext }) {
   const [formData, setFormData] = useState({
     jobTitle: '',
-    jobDescription: '',
     jobLocation: ''
   });
 
@@ -84,51 +86,74 @@ function Step1Content({ onNext }) {
       ...prevData,
       [name]: value
     }));
-  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Aquí puedes realizar alguna lógica con los datos del formulario si es necesario
+    // Movimiento al siguiente paso
     onNext();
   };
 
   return (
-    <div className='m-10 p-10 border'>
+    <div className='m-2 px-5 py-2 border'>
       <h2>Step 1 Content</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label htmlFor="jobTitle" className="block text-sm font-medium text-gray-700">Job Title</label>
-          <input type="text" id="jobTitle" name="jobTitle" value={formData.jobTitle} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded-md w-full" />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="jobDescription" className="block text-sm font-medium text-gray-700">Job Description</label>
-          <textarea id="jobDescription" name="jobDescription" value={formData.jobDescription} onChange={handleChange} rows="3" className="mt-1 p-2 border border-gray-300 rounded-md w-full"></textarea>
-        </div>
-        <div className="mb-4">
-          <label htmlFor="jobLocation" className="block text-sm font-medium text-gray-700">Job Location</label>
-          <input type="text" id="jobLocation" name="jobLocation" value={formData.jobLocation} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded-md w-full" />
-        </div>
-        <button type="submit" className="bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-md">Submit</button>
-      </form>
+      <div className="mb-4">
+        <label htmlFor="jobTitle" className="block text-sm font-medium text-gray-700">Job Title</label>
+        <input type="text" id="jobTitle" name="jobTitle" value={formData.jobTitle} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded-md w-full" />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="jobLocation" className="block text-sm font-medium text-gray-700">Job Location</label>
+        <input type="text" id="jobLocation" name="jobLocation" value={formData.jobLocation} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded-md w-full" />
+      </div>
     </div>
   );
 }
 
-
 function Step2Content() {
   return (
-    <div>
-      <h2>Step 2 Content</h2>
-      <p>This is the content of Step 2.</p>
+    <div style={{ background: '#f9f9f9', padding: '20px', borderRadius: '5px', minHeight: '200px' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div style={{ flex: 1, marginRight: '10px' }}>
+          <div style={{ backgroundColor: '#f0f0f0', padding: '10px', borderRadius: '5px', height: '100%' }}>
+            <h2>Card 1</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vehicula tristique dolor,
+              a tristique nisi rhoncus ut. Vestibulum in fringilla mauris.
+            </p>
+          </div>
+        </div>
+        <div style={{ flex: 1, marginLeft: '10px' }}>
+          <div style={{ backgroundColor: '#f0f0f0', padding: '10px', borderRadius: '5px', height: '100%' }}>
+            <h2>Card 2</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vehicula tristique dolor,
+              a tristique nisi rhoncus ut. Vestibulum in fringilla mauris.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
 
 function Step3Content() {
   return (
-    <div>
-      <h2>Step 3 Content</h2>
-      <p>This is the content of Step 3.</p>
+    <div style={{ display: 'flex', justifyContent: 'space-between', minHeight: '200px' }}>
+      <div style={{ flex: 1, marginRight: '10px' }}>
+        <div style={{ backgroundColor: '#f0f0f0', padding: '10px', borderRadius: '5px', height: '100%' }}>
+          <h2>Card 1</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vehicula tristique dolor,
+            a tristique nisi rhoncus ut. Vestibulum in fringilla mauris.
+          </p>
+        </div>
+      </div>
+      <div style={{ flex: 1, marginLeft: '10px' }}>
+        <div style={{ backgroundColor: '#f0f0f0', padding: '10px', borderRadius: '5px', height: '100%' }}>
+          <h2>Card 2</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vehicula tristique dolor,
+            a tristique nisi rhoncus ut. Vestibulum in fringilla mauris.
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

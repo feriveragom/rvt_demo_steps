@@ -9,45 +9,159 @@ import StepsSimple from './StepsSimple';
 // import StepsProgressBar from './StepsProgressBar';
 
 export default function App() {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState('StepsSimple');
 
   const renderComponent = (option) => {
     switch (option) {
       case 'StepsSimple':
         return <StepsSimple />;
       case 'StepsPanels':
-        return <StepsPanels />;
+        return <></>;
       case 'StepsBullets':
-        return <StepsBullets />;
+        return <></>;
       case 'StepsPanelsBorder':
-        return <StepsPanelsBorder />;
+        return <></>;
       case 'StepsCircles':
-        return <StepsCircles />;
+        return <></>;
       case 'StepsBulletsText':
-        return <StepsBulletsText />;
+        return <></>;
       case 'StepsCirclesText':
-        return <StepsCirclesText />;
+        return <></>;
       case 'StepsProgressBar':
-        return <StepsProgressBar />;
+        return <></>;
       default:
-        return <Simple />;
+        return <StepsSimple />;
     }
   };
 
   return (
-    <div className="m-10 space-y-10">
+    <div className="mx-10 mt-5 space-y-10">
       <div className="grid grid-cols-4 gap-1">
-        <div onClick={() => setSelectedOption('StepsSimple')} className="cursor-pointer bg-gray-200 p-4 rounded-md">Steps/Simple</div>
-        <div onClick={() => setSelectedOption('StepsPanels')} className="cursor-pointer bg-gray-200 p-4 rounded-md">Steps/Panels</div>
-        <div onClick={() => setSelectedOption('StepsBullets')} className="cursor-pointer bg-gray-200 p-4 rounded-md">Steps/Bullets</div>
-        <div onClick={() => setSelectedOption('StepsPanelsBorder')} className="cursor-pointer bg-gray-200 p-4 rounded-md">Steps/Panels with border</div>
-        <div onClick={() => setSelectedOption('StepsCircles')} className="cursor-pointer bg-gray-200 p-4 rounded-md">Steps/Circles</div>
-        <div onClick={() => setSelectedOption('StepsBulletsText')} className="cursor-pointer bg-gray-200 p-4 rounded-md">Steps/Bullets and text</div>
-        <div onClick={() => setSelectedOption('StepsCirclesText')} className="cursor-pointer bg-gray-200 p-4 rounded-md">Steps/Circles with text</div>
-        <div onClick={() => setSelectedOption('StepsProgressBar')} className="cursor-pointer bg-gray-200 p-4 rounded-md">Steps/Progress bar</div>
+        <div
+          onClick={() => setSelectedOption('StepsSimple')}
+          className={`cursor-pointer p-4 rounded-md ${
+            selectedOption === 'StepsSimple' ? 'bg-gray-400' : 'bg-gray-200'
+          }`}
+        >
+          Steps/Simple
+        </div>
+        <div
+          onClick={() => setSelectedOption('StepsPanels')}
+          className={`cursor-pointer p-4 rounded-md ${
+            selectedOption === 'StepsPanels' ? 'bg-gray-400' : 'bg-gray-200'
+          }`}
+        >
+          Steps/Panels
+        </div>
+        <div
+          onClick={() => setSelectedOption('StepsBullets')}
+          className={`cursor-pointer p-4 rounded-md ${
+            selectedOption === 'StepsBullets' ? 'bg-gray-400' : 'bg-gray-200'
+          }`}
+        >
+          Steps/Bullets
+        </div>
+        <div
+          onClick={() => setSelectedOption('StepsPanelsBorder')}
+          className={`cursor-pointer p-4 rounded-md ${
+            selectedOption === 'StepsPanelsBorder' ? 'bg-gray-400' : 'bg-gray-200'
+          }`}
+        >
+          Steps/Panels with border
+        </div>
+        <div
+          onClick={() => setSelectedOption('StepsCircles')}
+          className={`cursor-pointer p-4 rounded-md ${
+            selectedOption === 'StepsCircles' ? 'bg-gray-400' : 'bg-gray-200'
+          }`}
+        >
+          Steps/Circles
+        </div>
+
+        <div
+          onClick={() => setSelectedOption('StepsBulletsText')}
+          className={`cursor-pointer p-4 rounded-md ${
+            selectedOption === 'StepsBulletsText' ? 'bg-gray-400' : 'bg-gray-200'
+          }`}
+        >
+          Steps/Bullets and text
+        </div>
+
+        <div
+          onClick={() => setSelectedOption('StepsCirclesText')}
+          className={`cursor-pointer p-4 rounded-md ${
+            selectedOption === 'StepsCirclesText' ? 'bg-gray-400' : 'bg-gray-200'
+          }`}
+        >
+          Steps/Circles with text
+        </div>
+
+        <div
+          onClick={() => setSelectedOption('StepsProgressBar')}
+          className={`cursor-pointer p-4 rounded-md ${
+            selectedOption === 'StepsProgressBar' ? 'bg-gray-400' : 'bg-gray-200'
+          }`}
+        >
+          Steps/Progress bar
+        </div>
+
       </div>
       {selectedOption && renderComponent(selectedOption)}
     </div>
   );
-
 }
+
+
+// import { useState } from 'react';
+// import StepsSimple from './StepsSimple';
+// // import StepsPanels from './StepsPanels';
+// // import StepsBullets from './StepsBullets';
+// // import StepsPanelsBorder from './StepsPanelsBorder';
+// // import StepsCircles from './StepsCircles';
+// // import StepsBulletsText from './StepsBulletsText';
+// // import StepsCirclesText from './StepsCirclesText';
+// // import StepsProgressBar from './StepsProgressBar';
+
+// export default function App() {
+//   const [selectedOption, setSelectedOption] = useState(null);
+
+//   const renderComponent = (option) => {
+//     switch (option) {
+//       case 'StepsSimple':
+//         return <StepsSimple />;
+//       // case 'StepsPanels':
+//       //   return <StepsPanels />;
+//       // case 'StepsBullets':
+//       //   return <StepsBullets />;
+//       // case 'StepsPanelsBorder':
+//       //   return <StepsPanelsBorder />;
+//       // case 'StepsCircles':
+//       //   return <StepsCircles />;
+//       // case 'StepsBulletsText':
+//       //   return <StepsBulletsText />;
+//       // case 'StepsCirclesText':
+//       //   return <StepsCirclesText />;
+//       // case 'StepsProgressBar':
+//       //   return <StepsProgressBar />;
+//       default:
+//         return <StepsSimple />;
+//     }
+//   };
+
+//   return (
+//     <div className="m-10 space-y-10">
+//       <div className="grid grid-cols-4 gap-1">
+//         <div onClick={() => setSelectedOption('StepsSimple')} className="cursor-pointer bg-gray-200 p-4 rounded-md">Steps/Simple</div>
+//         <div onClick={() => setSelectedOption('StepsPanels')} className="cursor-pointer bg-gray-200 p-4 rounded-md">Steps/Panels</div>
+//         <div onClick={() => setSelectedOption('StepsBullets')} className="cursor-pointer bg-gray-200 p-4 rounded-md">Steps/Bullets</div>
+//         <div onClick={() => setSelectedOption('StepsPanelsBorder')} className="cursor-pointer bg-gray-200 p-4 rounded-md">Steps/Panels with border</div>
+//         <div onClick={() => setSelectedOption('StepsCircles')} className="cursor-pointer bg-gray-200 p-4 rounded-md">Steps/Circles</div>
+//         <div onClick={() => setSelectedOption('StepsBulletsText')} className="cursor-pointer bg-gray-200 p-4 rounded-md">Steps/Bullets and text</div>
+//         <div onClick={() => setSelectedOption('StepsCirclesText')} className="cursor-pointer bg-gray-200 p-4 rounded-md">Steps/Circles with text</div>
+//         <div onClick={() => setSelectedOption('StepsProgressBar')} className="cursor-pointer bg-gray-200 p-4 rounded-md">Steps/Progress bar</div>
+//       </div>
+//       {selectedOption && renderComponent(selectedOption)}
+//     </div>
+//   );
+
+// }
