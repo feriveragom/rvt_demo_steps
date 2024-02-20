@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import StepsSimple from './StepsSimple';
 import StepsPanels from './StepsPanels';
+import StepsSimpleCheck from './StepsSimpleCheck';
 
 export default function App() {
   const [selectedOption, setSelectedOption] = useState('StepsSimple');
@@ -11,6 +12,8 @@ export default function App() {
         return <StepsSimple />;
       case 'StepsPanels':
         return <StepsPanels />;
+      case 'StepsSimpleCheck':
+        return <StepsSimpleCheck />;
       default:
         return <StepsSimple />;
     }
@@ -34,6 +37,14 @@ export default function App() {
           }`}
         >
           Steps/Panels
+        </div>
+        <div
+          onClick={() => setSelectedOption('StepsSimpleCheck')}
+          className={`cursor-pointer p-4 rounded-md ${
+            selectedOption === 'StepsSimpleCheck' ? 'bg-gray-400' : 'bg-gray-200'
+          }`}
+        >
+          Steps/SimpleCheck
         </div>
       </div>
       {selectedOption && renderComponent(selectedOption)}
