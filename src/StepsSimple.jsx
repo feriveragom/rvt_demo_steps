@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import Step1Content from './Content/Step1Content'
+import Step2Content from './Content/Step2Content'
+import Step3Content from './Content/Step3Content'
 
 export default function StepsSimple() {
   const [steps, setSteps] = useState([
@@ -27,7 +30,7 @@ export default function StepsSimple() {
   const StepComponent = steps[currentStep].component;
 
   return (
-    <div className="">
+    <div>
       <nav aria-label="Progress">
         <ol role="list" className="space-y-4 md:flex md:space-x-8 md:space-y-0">
           {steps.map((step, index) => (
@@ -69,90 +72,6 @@ export default function StepsSimple() {
             Finalizar
           </button>
         )}
-      </div>
-    </div>
-  );
-}
-
-function Step1Content({ onNext }) {
-  const [formData, setFormData] = useState({
-    jobTitle: '',
-    jobLocation: ''
-  });
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value
-    }));
-
-    // Movimiento al siguiente paso
-    onNext();
-  };
-
-  return (
-    <div className='m-2 px-5 py-2 border'>
-      <h2>Step 1 Content</h2>
-      <div className="mb-4">
-        <label htmlFor="jobTitle" className="block text-sm font-medium text-gray-700">Job Title</label>
-        <input type="text" id="jobTitle" name="jobTitle" value={formData.jobTitle} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded-md w-full" />
-      </div>
-      <div className="mb-4">
-        <label htmlFor="jobLocation" className="block text-sm font-medium text-gray-700">Job Location</label>
-        <input type="text" id="jobLocation" name="jobLocation" value={formData.jobLocation} onChange={handleChange} className="mt-1 p-2 border border-gray-300 rounded-md w-full" />
-      </div>
-    </div>
-  );
-}
-
-function Step2Content() {
-  return (
-    <div style={{ background: '#f9f9f9', padding: '20px', borderRadius: '5px', minHeight: '200px' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <div style={{ flex: 1, marginRight: '10px' }}>
-          <div style={{ backgroundColor: '#f0f0f0', padding: '10px', borderRadius: '5px', height: '100%' }}>
-            <h2>Card 1</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vehicula tristique dolor,
-              a tristique nisi rhoncus ut. Vestibulum in fringilla mauris.
-            </p>
-          </div>
-        </div>
-        <div style={{ flex: 1, marginLeft: '10px' }}>
-          <div style={{ backgroundColor: '#f0f0f0', padding: '10px', borderRadius: '5px', height: '100%' }}>
-            <h2>Card 2</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vehicula tristique dolor,
-              a tristique nisi rhoncus ut. Vestibulum in fringilla mauris.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function Step3Content() {
-  return (
-    <div style={{ display: 'flex', justifyContent: 'space-between', minHeight: '200px' }}>
-      <div style={{ flex: 1, marginRight: '10px' }}>
-        <div style={{ backgroundColor: '#f0f0f0', padding: '10px', borderRadius: '5px', height: '100%' }}>
-          <h2>Card 1</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vehicula tristique dolor,
-            a tristique nisi rhoncus ut. Vestibulum in fringilla mauris.
-          </p>
-        </div>
-      </div>
-      <div style={{ flex: 1, marginLeft: '10px' }}>
-        <div style={{ backgroundColor: '#f0f0f0', padding: '10px', borderRadius: '5px', height: '100%' }}>
-          <h2>Card 2</h2>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vehicula tristique dolor,
-            a tristique nisi rhoncus ut. Vestibulum in fringilla mauris.
-          </p>
-        </div>
       </div>
     </div>
   );
